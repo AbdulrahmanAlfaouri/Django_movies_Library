@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7 no-js" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 no-js" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en" class="no-js">
+
+<!-- movielist_light16:30-->
+<head>
+	<!-- Basic need -->
+	<title>Open Pediatrics</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<link rel="profile" href="#">
+
+    <!--Google Font-->
+    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+	<!-- Mobile specific meta -->
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone-no">
+
+	<!-- CSS files -->
+	<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+<!-- BEGIN | Header -->
+<header class="ht-header">
+	<div class="container">
+		<nav class="navbar navbar-default navbar-custom">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header logo">
+				    <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					    <span class="sr-only">Toggle navigation</span>
+					    <div id="nav-icon1">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+				    </div>
+				    <a href="index_light.html"><img class="logo" src="images/logo1.png" alt="" width="119" height="58"></a>
+			    </div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav flex-child-menu menu-left">
+						<li class="hidden">
+							<a href="#page-top"></a>
+						</li>
+						<li class=" first">
+							<a class="btn btn-default  lv1" >
+							Home
+							</a>
+						</li>
+						<li class=" first">
+							<a class="btn btn-default  lv1"  >
+							movies
+							</a>
+						</li>
+						<li class="first">
+							<a href="{% url 'add_movie' %}">
+							Add a new movie
+							</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav flex-child-menu menu-right">
+						<li class="dropdown first">
+							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+							pages <i class="fa fa-angle-down" aria-hidden="true"></i>
+							</a>
+							<ul class="dropdown-menu level1">
+								<li><a href="landing.html">Landing</a></li>
+								<li><a href="404.html">404 Page</a></li>
+								<li class="it-last"><a href="comingsoon.html">Coming soon</a></li>
+							</ul>
+						</li>                
+						<li><a href="#">Help</a></li>
+						<li class="loginLink"><a href="#">LOG In</a></li>
+						<li class="btn signupLink"><a href="#">sign up</a></li>
+					</ul>
+				</div>
+			<!-- /.navbar-collapse -->
+	    </nav>
+	    
+	    <!-- top search form -->
+	    <div class="top-search">
+	    	<select>
+				<option value="united">TV show</option>
+				<option value="saab">Others</option>
+			</select>
+			<input type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for">
+	    </div>
+	</div>
+</header>
+<!-- END | Header -->
+
+    	<div class="buster-light">
+<div class="hero common-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1> movie listing - list</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single movie_list">
+	<div class="container">
+		<div class="row ipad-width2">
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="topbar-filter">
+					<p>Found <span>{{movies.count}}</span> in total</p>
+					<label>Sort by:</label>
+					<select>
+						<option value="popularity">Popularity Descending</option>
+						<option value="popularity">Popularity Ascending</option>
+						<option value="rating">Rating Descending</option>
+						<option value="rating">Rating Ascending</option>
+						<option value="date">Release date Descending</option>
+						<option value="date">Release date Ascending</option>
+					</select>
+					<a href="movielist_light.html" class="list"><i class="ion-ios-list-outline active"></i></a>
+					<a  href="moviegrid_light.html" class="grid"><i class="ion-grid"></i></a>
+				</div>
+				{% block content %}
+				{% endblock content %}
+			</div>
+			<div class="col-md-4 col-sm-12 col-xs-12">
+<!-- start of sidebar search form -->
+				<div class="sidebar">
+					<div class="searh-form">
+						<h4 class="sb-title">Search for movie</h4>
+						<form class="form-style-1" action="{% url 'search_results' %}" method="get">
+
+							<input class="form-control me-1" type="search" name="name" placeholder="name" aria-\label="Search" >
+
+							<input class="form-control me-2" type="date" name="year" placeholder="2000:1:1" aria-\label="Search" >
+
+							<select name="type">
+							  <option value="drama">drama</option>
+							  <option value="action">action</option>
+							  <option value="family">family</option>
+							  <option value="animations">animations</option>
+							</select>
+
+
+							<button class="btn btn-outline-success" type="submit">Search</button>
+						</form>
+					</div>
+<!-- end of sidebar search form -->						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		</div>
+<!-- footer section-->
+<footer class="ht-footer">
+	<div class="container">
+		<div class="flex-parent-ft">
+			<div class="flex-child-ft item1">
+				 <a href="index-2.html"><img class="logo" src="images/logo1.png" alt=""></a>
+				 <p>5th Avenue st, manhattan<br>
+				New York, NY 10001</p>
+				<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
+			</div>
+			<div class="flex-child-ft item2">
+				<h4>Resources</h4>
+				<ul>
+					<li><a href="#">About</a></li> 
+					<li><a href="#">Blockbuster</a></li>
+					<li><a href="#">Contact Us</a></li>
+					<li><a href="#">Forums</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Help Center</a></li>
+				</ul>
+			</div>
+			<div class="flex-child-ft item3">
+				<h4>Legal</h4>
+				<ul>
+					<li><a href="#">Terms of Use</a></li> 
+					<li><a href="#">Privacy Policy</a></li>	
+					<li><a href="#">Security</a></li>
+				</ul>
+			</div>
+			<div class="flex-child-ft item4">
+				<h4>Account</h4>
+				<ul>
+					<li><a href="#">My Account</a></li> 
+					<li><a href="#">Watchlist</a></li>	
+					<li><a href="#">Collections</a></li>
+					<li><a href="#">User Guide</a></li>
+				</ul>
+			</div>
+			<div class="flex-child-ft item5">
+				<h4>Newsletter</h4>
+				<p>Subscribe to our newsletter system now <br> to get latest news from us.</p>
+				<form action="#">
+					<input type="text" placeholder="Enter your email...">
+				</form>
+				<a href="#" class="btn">Subscribe now <i class="ion-ios-arrow-forward"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="ft-copyright">
+		<div class="ft-left">
+			<p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
+		</div>
+		<div class="backtotop">
+			<p><a href="#" id="back-to-top">Back to top  <i class="ion-ios-arrow-thin-up"></i></a></p>
+		</div>
+	</div>
+</footer>
+<!-- end of footer section-->
+
+<script src="js/jquery.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/plugins2.js"></script>
+<script src="js/custom.js"></script>
+</body>
+
+<!-- movielist_light16:30-->
+</html>

@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+	<h1>Search Results</h1>
+	{% for movie in movies %}
+		<div class="movie-item-style-2">
+			<img src="images/uploads/mv1.jpg" alt="">
+			<div class="mv-item-infor">
+				<h6><a href="moviesingle_light.html">{{movie.name}}<span>(2012)</span></a></h6>
+				<p class="rate"><i class="ion-android-star"></i><span>{{movie.my_rating}}</span> /5</p>
+				<p class="describe">{{movie.description}}</p>
+				<p class="run-time"> Run Time: {{movie.length}}’
+				.     <span>type: {{movie.movie_type}}</span>    .     
+				<span>Release: {{movie.year}}</span>
+				</p>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock content %}

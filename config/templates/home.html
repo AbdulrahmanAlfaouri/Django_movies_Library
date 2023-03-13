@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+	{% for movie in movies %}
+		<h1>{{movie.name}}</h1>
+		<ul>
+			<li>{{movie.year}}</li>
+			<li>{{movie.my_rating}}</li>
+			<li>{{movie.length}}</li>
+			<li>{{movie.movie_type}}</li>
+		</ul>
+	{% endfor %}
+{% endblock content %}

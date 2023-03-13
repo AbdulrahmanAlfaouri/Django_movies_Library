@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+	{% for movie in movies %}
+		<div class="movie-item-style-2">
+			<img src="{{movie.image.url}}" alt="">
+			<div class="mv-item-infor">
+				<h6><a href="moviesingle_light.html">{{movie.name}}<span>(2012)</span></a></h6>
+				<p class="rate"><i class="ion-android-star"></i><span>{{movie.my_rating}}</span> /5</p>
+				<p class="describe">{{movie.description}}</p>
+				<p class="run-time"> Run Time: {{movie.length}}’
+				.     <span>type: {{movie.movie_type}}</span>    .     
+				<span>Release: {{movie.year}}</span>
+				</p>
+			</div>
+		</div>
+	{% endfor %}
+
+	<div class="topbar-filter">
+		<div class="pagination2">
+		    <span class="step-links">
+		        {% if page_obj.has_previous %}
+		            <a href="?page=1">&laquo; first</a>
+		            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+		        {% endif %}
+
+		        <span class="current">
+		            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }},.
+		        </span>
+
+		        {% if page_obj.has_next %}
+		            <a  href="?page={{ page_obj.next_page_number }}">next</a>
+		            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+		        {% endif %}
+		    </span>
+		</div>
+	</div>
+
+	<div class="topbar-filter">
+					<label>Movies per page:</label>
+					<select>
+						<option value="range">5 Movies</option>
+						<option value="saab">10 Movies</option>
+					</select>
+					<div class="pagination2">
+						<span>Page 1 of 2:</span>
+						<a class="active" href="#">1</a>
+						<a href="#">2</a>
+						<a href="#"><i class="ion-arrow-right-b"></i></a>
+					</div>
+				</div>
+{% endblock content %}
