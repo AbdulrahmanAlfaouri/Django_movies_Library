@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Movie(models.Model):
 	
@@ -16,7 +17,7 @@ class Movie(models.Model):
 		animations = 'animations'
 
 	
-
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	name = models.CharField(max_length=100)
 	movie_type = models.CharField(max_length=10,choices=Types.choices)
 	my_rating = models.IntegerField(default=0, choices=MyRating.choices)

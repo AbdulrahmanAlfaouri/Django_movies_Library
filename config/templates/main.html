@@ -81,8 +81,14 @@
 							</ul>
 						</li>                
 						<li><a href="#">Help</a></li>
-						<li class="loginLink"><a href="#">LOG In</a></li>
-						<li class="btn signupLink"><a href="#">sign up</a></li>
+						{% if user.is_authenticated %}
+							<li class="loginLink">{{user.username}}</li>
+							<li class="loginLink"><a href="{% url 'logout' %}">LOG Out</a></li>
+						{% else %}	
+							<li class="loginLink"><a href="{% url 'login' %}">LOG In</a></li>
+							<li class="btn signupLink"><a href="{% url 'signup' %}">sign up</a></li>
+						{% endif %}
+						
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->
